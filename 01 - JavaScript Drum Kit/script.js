@@ -9,10 +9,10 @@ function removeTransition(e) {
   function playSound(e) {
     const audio = document.querySelector(`audio[data-key="${e.keyCode}"]`);
     const key = document.querySelector(`div[data-key="${e.keyCode}"]`);
-    if (!audio) return;
+    if (!audio) return; // Stops the function from running all together
 
     key.classList.add('playing');
-    audio.currentTime = 0;
+    audio.currentTime = 0; // Allows spamming by rewinding to the start
     audio.play();
   }
 
