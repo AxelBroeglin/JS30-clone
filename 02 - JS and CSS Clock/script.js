@@ -1,4 +1,9 @@
-//need to catch hamds
+//need to catch hands
+const hourHand = document.querySelector('.hour-hand');
+const minHand = document.querySelector('.min-hand');
+const secondHand = document.querySelector('.second-hand');
+
+
 //need to apply rotation from center
 
 
