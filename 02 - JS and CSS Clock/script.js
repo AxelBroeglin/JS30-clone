@@ -3,7 +3,7 @@ const hands = document.querySelectorAll('.hand');
 
 //Catch each hand
 const hourHand = document.querySelector('.hour-hand');
-const minHand = document.querySelector('.min-hand');
+const minsHand = document.querySelector('.min-hand');
 const secondHand = document.querySelector('.second-hand');
 
 
@@ -12,13 +12,23 @@ const secondHand = document.querySelector('.second-hand');
 
 let today= new Date();
  
-console.log(today.getHours()); //Ouput: "12"
-console.log(today.getMinutes()); //Ouput: "28"
-console.log(today.getSeconds()); //Ouput: "57"
+function setDate() {
+    const now = new Date();
+
+    const seconds = now.getSeconds();
+    const secondDegrees = ((seconds/60) * 360) + 90;
+    secondHand.style.transform = `rotate(${secondDegrees}deg)`;
+
+    const mins = now.getMinutes();
+    const minsDegrees = ((mins / 60) * 360) + ((seconds/60)*6) + 90; //Deg + sec degree
+    minsHand.style.transform = `rotate(${minsDegrees}deg)`;
+
+    const hour = now.getHours();
+    const hourDegrees = ((hour / 12) * 360) + ((mins/60)*30) + 90; //Deg + minutes degree
+    hourHand.style.transform = `rotate(${hourDegrees}deg)`;
+
+}
 
 
-
-hourHand.setAttribute('style', 'transform: rotate('today.getHours()'deg);');
-
-
-//we have sec min and hours. Need to find formula to rotate hands.
+setInterval(setDate, 1000);
+setDate();
