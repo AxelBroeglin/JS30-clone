@@ -26,7 +26,7 @@ function handlePlayButton(){video.paused ? video.play() : video.pause()}
 //currentTime += 25seconds
 
 //Function for the volume
-//volume = position of the bar ?
+//volume = position of the bar
 
 
 
