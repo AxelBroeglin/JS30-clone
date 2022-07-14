@@ -14,6 +14,12 @@ const ranges = player.querySelectorAll('.player__slider');
 //Play-pause function
 function handlePlayButton(){video.paused ? video.play() : video.pause()}
 
+//Fuction to change play pause icon
+function updateButton() {
+    const icon = this.paused ? '►' : '❚ ❚';
+    toggle.textContent = icon;
+  }
+  
 //Function that fires when user is finished moving/skipping to a new position in the video, gives new position, will be used to indicate where yellow bar is.
 // onseeked - alerts when finished moving
 // currentTime - give currentTime of video
@@ -25,11 +31,7 @@ function handlePlayButton(){video.paused ? video.play() : video.pause()}
 //currentTime -= 10seconds
 //currentTime += 25seconds
 function currentTime(){
-    if(skipButtons == "10"){
-        video.currentTime -= "10";
-    } else{
-        video.currentTime += "25"
-    }
+    video.currentTime += parseFloat(this.dataset.skip);
 }
 
 //Function for the volume
@@ -44,12 +46,16 @@ function currentTime(){
 toggle.addEventListener("click", handlePlayButton, false);
 video.addEventListener("click", handlePlayButton, false);
 
+//Playing or pausing video changes button
+video.addEventListener('play', updateButton);
+video.addEventListener('pause', updateButton);
+
 //Position change of the play bar
 
 //Position change on speed bar
 
-//Click on -10secs
-//Click on +25secs
-video.addEventListener("click", currentTime, false);
-console.log(skipButtons)
+//Click on -10secs or +25secs
+skipButtons.forEach(skipButton => {skipButton.addEventListener("click", currentTime, false);
+})
+
 //Position change for volume bar
