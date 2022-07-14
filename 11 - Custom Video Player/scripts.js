@@ -24,6 +24,13 @@ function handlePlayButton(){video.paused ? video.play() : video.pause()}
 //Function that allows skipping -10 or +25 sec in video
 //currentTime -= 10seconds
 //currentTime += 25seconds
+function currentTime(){
+    if(skipButtons == "10"){
+        video.currentTime -= "10";
+    } else{
+        video.currentTime += "25"
+    }
+}
 
 //Function for the volume
 //volume = position of the bar
@@ -43,5 +50,6 @@ video.addEventListener("click", handlePlayButton, false);
 
 //Click on -10secs
 //Click on +25secs
-
+video.addEventListener("click", currentTime, false);
+console.log(skipButtons)
 //Position change for volume bar
