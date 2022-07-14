@@ -18,11 +18,18 @@ function handlePlayButton(){video.paused ? video.play() : video.pause()}
 function updateButton() {
     const icon = this.paused ? '►' : '❚ ❚';
     toggle.textContent = icon;
-  }
+}
   
-//Function that fires when user is finished moving/skipping to a new position in the video, gives new position, will be used to indicate where yellow bar is.
-// onseeked - alerts when finished moving
-// currentTime - give currentTime of video
+//Function for video progress
+function handleProgress() {
+    const percent = (video.currentTime / video.duration) * 100;
+    progressBar.style.flexBasis = `${percent}%`;
+}
+  function scrub(e) {
+    const scrubTime = (e.offsetX / progress.offsetWidth) * video.duration;
+    video.currentTime = scrubTime;
+}
+  
 
 //Function for video speed
 function handleRangeUpdate() {
@@ -33,6 +40,7 @@ function handleRangeUpdate() {
 function currentTime(){
     video.currentTime += parseFloat(this.dataset.skip);
 }
+
 
 
 /* Hook up the event listeners */
