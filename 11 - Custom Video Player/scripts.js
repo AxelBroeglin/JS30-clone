@@ -26,10 +26,12 @@ function updateButton() {
 
 //Function for video speed
 //playbackRate 0.5, 1, 1.5
+function speed(){
+    video.playbackRate = video.playbackRate.value;
+}
+
 
 //Function that allows skipping -10 or +25 sec in video
-//currentTime -= 10seconds
-//currentTime += 25seconds
 function currentTime(){
     video.currentTime += parseFloat(this.dataset.skip);
 }
@@ -52,6 +54,8 @@ video.addEventListener('pause', updateButton);
 //Position change of the play bar
 
 //Position change on speed bar
+ranges.forEach(range => range.addEventListener('change', handleRangeUpdate));
+ranges.forEach(range => range.addEventListener('mousemove', handleRangeUpdate));
 
 //Click on -10secs or +25secs
 skipButtons.forEach(skipButton => {skipButton.addEventListener("click", currentTime, false);
