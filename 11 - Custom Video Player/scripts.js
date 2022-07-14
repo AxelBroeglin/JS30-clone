@@ -39,7 +39,6 @@ function currentTime(){
 
 
 
-
 /* Hook up the event listeners */
 
 //Clicks on play button and video
