@@ -26,10 +26,9 @@ function updateButton() {
 
 //Function for video speed
 //playbackRate 0.5, 1, 1.5
-function speed(){
-    video.playbackRate = video.playbackRate.value;
+function handleRangeUpdate() {
+    video[this.name] = this.value;
 }
-
 
 //Function that allows skipping -10 or +25 sec in video
 function currentTime(){
