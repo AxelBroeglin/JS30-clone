@@ -46,7 +46,11 @@ video.addEventListener('play', updateButton);
 video.addEventListener('pause', updateButton);
 
 //Position change of the play bar
-
+let mousedown = false;
+progress.addEventListener('click', scrub);
+progress.addEventListener('mousemove', (e) => mousedown && scrub(e));
+progress.addEventListener('mousedown', () => mousedown = true);
+progress.addEventListener('mouseup', () => mousedown = false);
 
 //Position change on speed bar
 ranges.forEach(range => range.addEventListener('change', handleRangeUpdate));
