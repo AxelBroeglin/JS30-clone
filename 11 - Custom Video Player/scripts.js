@@ -25,7 +25,6 @@ function updateButton() {
 // currentTime - give currentTime of video
 
 //Function for video speed
-//playbackRate 0.5, 1, 1.5
 function handleRangeUpdate() {
     video[this.name] = this.value;
 }
@@ -34,10 +33,6 @@ function handleRangeUpdate() {
 function currentTime(){
     video.currentTime += parseFloat(this.dataset.skip);
 }
-
-//Function for the volume
-//volume = position of the bar
-
 
 
 /* Hook up the event listeners */
@@ -52,6 +47,7 @@ video.addEventListener('pause', updateButton);
 
 //Position change of the play bar
 
+
 //Position change on speed bar
 ranges.forEach(range => range.addEventListener('change', handleRangeUpdate));
 ranges.forEach(range => range.addEventListener('mousemove', handleRangeUpdate));
@@ -59,5 +55,3 @@ ranges.forEach(range => range.addEventListener('mousemove', handleRangeUpdate));
 //Click on -10secs or +25secs
 skipButtons.forEach(skipButton => {skipButton.addEventListener("click", currentTime, false);
 })
-
-//Position change for volume bar
